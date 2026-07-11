@@ -42,6 +42,17 @@ This repository will contain:
 - application source code
 - future design and implementation notes
 
+## Development
+
+The application uses Next.js, TypeScript, and plain CSS.
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000` to view the application.
+
 ## Status
 
-Project setup in progress.
+The responsive application foundation is in development. Data shown in the initial interface is illustrative; persistence and authentication will follow in separate features.
