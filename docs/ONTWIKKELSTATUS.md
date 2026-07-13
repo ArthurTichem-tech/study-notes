@@ -77,11 +77,12 @@ onderzoeksvraag
 - [x] Linting en productiebuild laten slagen.
 - [x] Productie-afhankelijkheden op bekende kwetsbaarheden controleren.
 - [x] Relationeel PostgreSQL-datamodel en eerste migratie toevoegen.
+- [x] Testfundament met frontend- en database-integratietests toevoegen.
 - [ ] Frontendtermen aanpassen van algemene thema's naar onderzoeksdossiers.
 - [x] PostgreSQL en Drizzle als databasebasis vastleggen.
 - [ ] Definitieve authenticatiekeuze vastleggen.
 - [ ] Server-side toegangscontrole voorbereiden.
-- [ ] Automatische testbasis toevoegen.
+- [x] Automatische testbasis toevoegen.
 - [ ] Centrale foutafhandeling en logging toevoegen.
 
 ## Afgeronde pull requests
@@ -108,10 +109,9 @@ De databasefoundation is in ontwikkeling op branch `agent/database-foundation`. 
 ## Eerstvolgende ontwikkelbeslissingen
 
 1. De database lokaal of beheerd beschikbaar maken en de eerste migratie uitvoeren.
-2. Een automatische testbasis toevoegen voor schema en belangrijkste regels.
-3. De bestaande startpagina inhoudelijk aanpassen van thema-overzicht naar onderzoeksdossiers.
-4. Authenticatie voor de persoonlijke onderzoeksomgeving kiezen en implementeren.
-5. Daarna onderzoeksdossiers functioneel maken.
+2. De bestaande startpagina inhoudelijk aanpassen van thema-overzicht naar onderzoeksdossiers.
+3. Authenticatie voor de persoonlijke onderzoeksomgeving kiezen en implementeren.
+4. Daarna onderzoeksdossiers functioneel maken, inclusief tests voor iedere gebruikersroute.
 
 ## Werkwijze voor voortgang
 

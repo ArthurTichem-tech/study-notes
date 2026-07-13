@@ -54,6 +54,7 @@ CREATE TABLE "research_questions" (
 	"status" "record_status" DEFAULT 'active' NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
+	CONSTRAINT "research_questions_id_dossier_unique" UNIQUE("id","dossier_id"),
 	CONSTRAINT "research_questions_position_non_negative" CHECK ("research_questions"."position" >= 0)
 );
 --> statement-breakpoint
@@ -98,7 +99,8 @@ CREATE TABLE "study_items" (
 	"argument_function" "argument_function",
 	"status" "record_status" DEFAULT 'active' NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
-	"updated_at" timestamp with time zone DEFAULT now() NOT NULL
+	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
+	CONSTRAINT "study_items_id_dossier_unique" UNIQUE("id","dossier_id")
 );
 --> statement-breakpoint
 CREATE TABLE "themes" (
@@ -111,6 +113,7 @@ CREATE TABLE "themes" (
 	"status" "record_status" DEFAULT 'active' NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
+	CONSTRAINT "themes_id_dossier_unique" UNIQUE("id","dossier_id"),
 	CONSTRAINT "themes_position_non_negative" CHECK ("themes"."position" >= 0)
 );
 --> statement-breakpoint
@@ -145,6 +148,7 @@ CREATE TABLE "writing_sections" (
 	"status" "record_status" DEFAULT 'active' NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
+	CONSTRAINT "writing_sections_id_dossier_unique" UNIQUE("id","dossier_id"),
 	CONSTRAINT "writing_sections_position_non_negative" CHECK ("writing_sections"."position" >= 0)
 );
 --> statement-breakpoint
@@ -178,7 +182,6 @@ CREATE INDEX "research_dossiers_user_idx" ON "research_dossiers" USING btree ("u
 CREATE INDEX "research_dossiers_user_status_idx" ON "research_dossiers" USING btree ("user_id","status");--> statement-breakpoint
 CREATE INDEX "research_questions_dossier_idx" ON "research_questions" USING btree ("dossier_id");--> statement-breakpoint
 CREATE INDEX "research_questions_theme_idx" ON "research_questions" USING btree ("theme_id");--> statement-breakpoint
-CREATE UNIQUE INDEX "research_questions_id_dossier_unique" ON "research_questions" USING btree ("id","dossier_id");--> statement-breakpoint
 CREATE INDEX "source_references_item_idx" ON "source_references" USING btree ("study_item_id");--> statement-breakpoint
 CREATE INDEX "source_references_source_idx" ON "source_references" USING btree ("source_id");--> statement-breakpoint
 CREATE INDEX "sources_user_idx" ON "sources" USING btree ("user_id");--> statement-breakpoint
@@ -188,13 +191,10 @@ CREATE INDEX "study_items_theme_idx" ON "study_items" USING btree ("theme_id");-
 CREATE INDEX "study_items_question_idx" ON "study_items" USING btree ("question_id");--> statement-breakpoint
 CREATE INDEX "study_items_type_idx" ON "study_items" USING btree ("type");--> statement-breakpoint
 CREATE INDEX "study_items_argument_function_idx" ON "study_items" USING btree ("argument_function");--> statement-breakpoint
-CREATE UNIQUE INDEX "study_items_id_dossier_unique" ON "study_items" USING btree ("id","dossier_id");--> statement-breakpoint
 CREATE INDEX "themes_dossier_idx" ON "themes" USING btree ("dossier_id");--> statement-breakpoint
 CREATE INDEX "themes_parent_idx" ON "themes" USING btree ("parent_theme_id");--> statement-breakpoint
-CREATE UNIQUE INDEX "themes_id_dossier_unique" ON "themes" USING btree ("id","dossier_id");--> statement-breakpoint
 CREATE UNIQUE INDEX "users_email_unique" ON "users" USING btree ("email");--> statement-breakpoint
 CREATE INDEX "writing_section_items_dossier_idx" ON "writing_section_items" USING btree ("dossier_id");--> statement-breakpoint
 CREATE INDEX "writing_section_items_item_idx" ON "writing_section_items" USING btree ("study_item_id");--> statement-breakpoint
 CREATE INDEX "writing_sections_dossier_idx" ON "writing_sections" USING btree ("dossier_id");--> statement-breakpoint
-CREATE INDEX "writing_sections_parent_idx" ON "writing_sections" USING btree ("parent_section_id");--> statement-breakpoint
-CREATE UNIQUE INDEX "writing_sections_id_dossier_unique" ON "writing_sections" USING btree ("id","dossier_id");
+CREATE INDEX "writing_sections_parent_idx" ON "writing_sections" USING btree ("parent_section_id");

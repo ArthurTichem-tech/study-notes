@@ -47,6 +47,7 @@ This repository will contain:
 - [Current product plan](docs/HUIDIG_PLAN.md)
 - [Development status](docs/ONTWIKKELSTATUS.md)
 - [Database foundation](docs/DATABASE.md)
+- [Testing strategy](docs/TESTING.md)
 
 ## Development
 

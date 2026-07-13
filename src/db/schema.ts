@@ -10,6 +10,7 @@ import {
   primaryKey,
   text,
   timestamp,
+  unique,
   uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
@@ -123,7 +124,7 @@ export const themes = pgTable(
   (table) => [
     index("themes_dossier_idx").on(table.dossierId),
     index("themes_parent_idx").on(table.parentThemeId),
-    uniqueIndex("themes_id_dossier_unique").on(table.id, table.dossierId),
+    unique("themes_id_dossier_unique").on(table.id, table.dossierId),
     check("themes_position_non_negative", sql`${table.position} >= 0`),
   ],
 );
@@ -145,7 +146,7 @@ export const researchQuestions = pgTable(
   (table) => [
     index("research_questions_dossier_idx").on(table.dossierId),
     index("research_questions_theme_idx").on(table.themeId),
-    uniqueIndex("research_questions_id_dossier_unique").on(table.id, table.dossierId),
+    unique("research_questions_id_dossier_unique").on(table.id, table.dossierId),
     foreignKey({
       columns: [table.themeId, table.dossierId],
       foreignColumns: [themes.id, themes.dossierId],
@@ -178,7 +179,7 @@ export const studyItems = pgTable(
     index("study_items_question_idx").on(table.questionId),
     index("study_items_type_idx").on(table.type),
     index("study_items_argument_function_idx").on(table.argumentFunction),
-    uniqueIndex("study_items_id_dossier_unique").on(table.id, table.dossierId),
+    unique("study_items_id_dossier_unique").on(table.id, table.dossierId),
     foreignKey({
       columns: [table.themeId, table.dossierId],
       foreignColumns: [themes.id, themes.dossierId],
@@ -328,7 +329,7 @@ export const writingSections = pgTable(
   (table) => [
     index("writing_sections_dossier_idx").on(table.dossierId),
     index("writing_sections_parent_idx").on(table.parentSectionId),
-    uniqueIndex("writing_sections_id_dossier_unique").on(table.id, table.dossierId),
+    unique("writing_sections_id_dossier_unique").on(table.id, table.dossierId),
     check("writing_sections_position_non_negative", sql`${table.position} >= 0`),
   ],
 );

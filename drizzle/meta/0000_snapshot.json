@@ -1,5 +1,5 @@
 {
-  "id": "cba8a060-f28a-4e89-8e34-5d67f9bb3c5b",
+  "id": "75d2ccd3-fdc5-48fc-8a0c-0ecb95fde800",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -544,27 +544,6 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
-        },
-        "research_questions_id_dossier_unique": {
-          "name": "research_questions_id_dossier_unique",
-          "columns": [
-            {
-              "expression": "id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "dossier_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
         }
       },
       "foreignKeys": {
@@ -598,7 +577,16 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "research_questions_id_dossier_unique": {
+          "name": "research_questions_id_dossier_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "id",
+            "dossier_id"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {
         "research_questions_position_non_negative": {
@@ -1041,27 +1029,6 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
-        },
-        "study_items_id_dossier_unique": {
-          "name": "study_items_id_dossier_unique",
-          "columns": [
-            {
-              "expression": "id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "dossier_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
         }
       },
       "foreignKeys": {
@@ -1110,7 +1077,16 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "study_items_id_dossier_unique": {
+          "name": "study_items_id_dossier_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "id",
+            "dossier_id"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -1210,27 +1186,6 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
-        },
-        "themes_id_dossier_unique": {
-          "name": "themes_id_dossier_unique",
-          "columns": [
-            {
-              "expression": "id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "dossier_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
         }
       },
       "foreignKeys": {
@@ -1262,7 +1217,16 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "themes_id_dossier_unique": {
+          "name": "themes_id_dossier_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "id",
+            "dossier_id"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {
         "themes_position_non_negative": {
@@ -1583,27 +1547,6 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
-        },
-        "writing_sections_id_dossier_unique": {
-          "name": "writing_sections_id_dossier_unique",
-          "columns": [
-            {
-              "expression": "id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "dossier_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": true,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
         }
       },
       "foreignKeys": {
@@ -1635,7 +1578,16 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "writing_sections_id_dossier_unique": {
+          "name": "writing_sections_id_dossier_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "id",
+            "dossier_id"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {
         "writing_sections_position_non_negative": {
