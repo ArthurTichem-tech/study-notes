@@ -4,7 +4,7 @@ Study Notes gebruikt PostgreSQL met Drizzle ORM. Dit past bij de relationele ker
 
 ## Huidige status
 
-Het schema en de eerste SQL-migratie zijn aanwezig. Er is nog geen lokale of beheerde PostgreSQL-database gekoppeld en er staat nog geen echte gebruikersdata in de applicatie.
+Het schema en de eerste SQL-migratie zijn aanwezig. Voor lokale ontwikkeling gebruikt het project PGlite: een ingebedde PostgreSQL-database die zonder Docker of aparte database-installatie werkt. Een beheerde PostgreSQL-database voor productie wordt later gekoppeld.
 
 ## Tabellen
 
@@ -34,9 +34,23 @@ Het schema en de eerste SQL-migratie zijn aanwezig. Er is nog geen lokale of beh
 - Bronnen kunnen door meerdere studie-items worden hergebruikt.
 - Eén studie-item kan in meerdere schrijfsecties worden gebruikt zonder duplicatie van de inhoud.
 
-## Configuratie
+## Lokale database
 
-Maak lokaal een `.env.local` op basis van `.env.example` en vul een geldige PostgreSQL-verbinding in:
+Maak de lokale database aan en voer alle openstaande migraties uit:
+
+```bash
+npm run db:local:setup
+```
+
+De databasebestanden komen standaard in `.data/postgres`. Deze map staat in `.gitignore`, zodat lokale onderzoeksdata nooit per ongeluk wordt gecommit. Het commando mag veilig vaker worden uitgevoerd: alleen nog niet geregistreerde migraties worden toegepast.
+
+De opslaglocatie kan optioneel worden aangepast in `.env.local`:
+
+```env
+PGLITE_DATA_DIR=.data/postgres
+```
+
+PGlite is bedoeld voor lokale ontwikkeling en tests. De uiteindelijke applicatie gebruikt een gewone PostgreSQL-verbinding. Vul daarvoor later een geldige verbinding in:
 
 ```env
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/study_notes
@@ -53,6 +67,9 @@ npm run db:generate
 # Controleer de migratiemetadata
 npm run db:check
 
+# Maak de ingebedde lokale database aan of werk deze bij
+npm run db:local:setup
+
 # Voer nog niet uitgevoerde migraties uit op de ingestelde database
 npm run db:migrate
 
@@ -64,9 +81,11 @@ npm run db:studio
 
 - `src/db/schema.ts`: tabellen, enums, indexen en beperkingen.
 - `src/db/client.ts`: kleine databasefactory zonder globale verbinding.
+- `src/db/local-migrations.ts`: transactionele migratierunner voor de lokale database.
+- `scripts/setup-local-db.ts`: lokaal installatiecommando met blijvende opslag.
 - `drizzle.config.ts`: configuratie van migratiegeneratie en databasecommando's.
 - `drizzle/`: versiebeheer van gegenereerde SQL en Drizzle-metadata.
 
 ## Volgende technische stap
 
-De eerste migratie moet op een echte ontwikkel-PostgreSQL-database worden uitgevoerd. Daarna voegen we geautomatiseerde tests toe voor de belangrijkste integriteitsregels en kiezen we authenticatie voor de persoonlijke onderzoeksomgeving.
+De database en migraties zijn lokaal bruikbaar en automatisch getest. De volgende productstap is de frontend omzetten naar echte onderzoeksdossiers; daarna kiezen en implementeren we authenticatie voor de persoonlijke omgeving.
