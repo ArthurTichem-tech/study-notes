@@ -42,6 +42,11 @@ This repository will contain:
 - application source code
 - future design and implementation notes
 
+## Project Documentation
+
+- [Current product plan](docs/HUIDIG_PLAN.md)
+- [Development status](docs/ONTWIKKELSTATUS.md)
+
 ## Development
 
 The application uses Next.js, TypeScript, and plain CSS.
