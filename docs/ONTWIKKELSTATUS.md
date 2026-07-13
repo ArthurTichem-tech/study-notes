@@ -19,7 +19,7 @@ Dit document is de vaste voortgangsregistratie van Study Notes. Het wordt bijgew
 
 **Actieve productfase:** fase 1 - technisch fundament. Fase 0 is voor nu bewust overgeslagen om direct met de software te starten.
 
-**Technische positie:** een deel van fase 1 is afgerond. De responsive frontendbasis staat in `main`, maar database, authenticatie, automatische tests en de inhoudelijke onderzoeksworkflow zijn nog niet gebouwd.
+**Technische positie:** de responsive frontendbasis, het relationele databaseschema en de automatische testbasis staan in `main`. Op branch `agent/local-database` wordt een blijvende lokale ontwikkel-database toegevoegd. Authenticatie en de inhoudelijke onderzoeksworkflow zijn nog niet gebouwd.
 
 **Eerstvolgende mijlpaal:** aantonen dat gebruikers de kernworkflow begrijpen en waardevol vinden:
 
@@ -37,7 +37,7 @@ onderzoeksvraag
 | Fase | Status | Voortgang | Eerstvolgende resultaat |
 | --- | --- | --- | --- |
 | 0. Probleemvalidatie en prototype | Uitgesteld | Op verzoek overgeslagen om direct met de software te starten. | Later alsnog uitvoeren vóór een brede marktintroductie. |
-| 1. Technisch fundament | In ontwikkeling | Projectconfiguratie, responsive app-shell, basisstijl, navigatie, linting en productiebuild zijn afgerond. Het relationele PostgreSQL-model is in ontwikkeling. | Migratie controleren, database aansluiten, testbasis en foutafhandeling toevoegen. |
+| 1. Technisch fundament | In ontwikkeling | Projectconfiguratie, responsive app-shell, PostgreSQL-model, eerste migratie en automatische testbasis zijn afgerond. De lokale ontwikkel-database wordt aangesloten. | Lokale database afronden, frontendtermen aanpassen en authenticatie kiezen. |
 | 2. Account en persoonlijke omgeving | Niet gestart | Nog geen authenticatie, accountbeheer of onderzoeksdossiers. | Technische keuze voor authenticatie en persoonlijke dataopslag. |
 | 3. Onderzoeksvragen, thema's en deelvragen | Niet gestart | Alleen illustratieve thema's in de frontend. | Functioneel dossier met onderzoeksvraag, deelvragen en themahiërarchie. |
 | 4. Studie-items | Niet gestart | Alleen illustratieve notities in de frontend. | Items aanmaken, typeren, bewerken en archiveren. |
@@ -80,6 +80,8 @@ onderzoeksvraag
 - [x] Testfundament met frontend- en database-integratietests toevoegen.
 - [ ] Frontendtermen aanpassen van algemene thema's naar onderzoeksdossiers.
 - [x] PostgreSQL en Drizzle als databasebasis vastleggen.
+- [x] Blijvende lokale ontwikkel-database zonder Docker toevoegen.
+- [x] Eerste migratie lokaal en herhaalbaar uitvoeren.
 - [ ] Definitieve authenticatiekeuze vastleggen.
 - [ ] Server-side toegangscontrole voorbereiden.
 - [x] Automatische testbasis toevoegen.
@@ -92,10 +94,11 @@ onderzoeksvraag
 | [#1](https://github.com/ArthurTichem-tech/study-notes/pull/1) | Responsive app foundation | Gemergd. Technische frontendbasis, startscherm en mobiele navigatie toegevoegd. |
 | [#2](https://github.com/ArthurTichem-tech/study-notes/pull/2) | Eerste MVP-plan | Gemergd en met deze planwijziging vervangen door de individuele onderzoeksworkflow. |
 | [#3](https://github.com/ArthurTichem-tech/study-notes/pull/3) | Vernieuwd productplan en ontwikkelstatus | Gemergd. Individuele onderzoeksworkflow en vaste voortgangsregistratie toegevoegd. |
+| [#4](https://github.com/ArthurTichem-tech/study-notes/pull/4) | Database- en testfundering | Gemergd. Relationeel PostgreSQL-model, eerste migratie en frontend- en database-integratietests toegevoegd. |
 
 ## Actieve pull requests
 
-De databasefoundation is in ontwikkeling op branch `agent/database-foundation`. Er zijn geen andere actieve functionele pull requests.
+De lokale ontwikkel-database is in ontwikkeling op branch `agent/local-database`. Er zijn geen andere actieve functionele pull requests.
 
 ## Belangrijke koersbesluiten
 
@@ -108,10 +111,9 @@ De databasefoundation is in ontwikkeling op branch `agent/database-foundation`. 
 
 ## Eerstvolgende ontwikkelbeslissingen
 
-1. De database lokaal of beheerd beschikbaar maken en de eerste migratie uitvoeren.
-2. De bestaande startpagina inhoudelijk aanpassen van thema-overzicht naar onderzoeksdossiers.
-3. Authenticatie voor de persoonlijke onderzoeksomgeving kiezen en implementeren.
-4. Daarna onderzoeksdossiers functioneel maken, inclusief tests voor iedere gebruikersroute.
+1. De bestaande startpagina inhoudelijk aanpassen van thema-overzicht naar onderzoeksdossiers.
+2. Authenticatie voor de persoonlijke onderzoeksomgeving kiezen en implementeren.
+3. Daarna onderzoeksdossiers functioneel maken, inclusief tests voor iedere gebruikersroute.
 
 ## Werkwijze voor voortgang
 
