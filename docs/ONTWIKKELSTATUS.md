@@ -17,7 +17,7 @@ Dit document is de vaste voortgangsregistratie van Study Notes. Het wordt bijgew
 
 ## Huidige positie
 
-**Actieve productfase:** fase 0 - probleemvalidatie en workflowprototype.
+**Actieve productfase:** fase 1 - technisch fundament. Fase 0 is voor nu bewust overgeslagen om direct met de software te starten.
 
 **Technische positie:** een deel van fase 1 is afgerond. De responsive frontendbasis staat in `main`, maar database, authenticatie, automatische tests en de inhoudelijke onderzoeksworkflow zijn nog niet gebouwd.
 
@@ -36,8 +36,8 @@ onderzoeksvraag
 
 | Fase | Status | Voortgang | Eerstvolgende resultaat |
 | --- | --- | --- | --- |
-| 0. Probleemvalidatie en prototype | In voorbereiding | Productplan vernieuwd; eerste responsive interface beschikbaar. Gebruikersgesprekken en complete workflowtest zijn nog niet uitgevoerd. | Interviewopzet, 5-10 gesprekken en een testbaar workflowprototype. |
-| 1. Technisch fundament | In ontwikkeling | Projectconfiguratie, responsive app-shell, basisstijl, navigatie, linting en productiebuild zijn afgerond. | Datamodel kiezen, database opzetten, testbasis en foutafhandeling toevoegen. |
+| 0. Probleemvalidatie en prototype | Uitgesteld | Op verzoek overgeslagen om direct met de software te starten. | Later alsnog uitvoeren vóór een brede marktintroductie. |
+| 1. Technisch fundament | In ontwikkeling | Projectconfiguratie, responsive app-shell, basisstijl, navigatie, linting en productiebuild zijn afgerond. Het relationele PostgreSQL-model is in ontwikkeling. | Migratie controleren, database aansluiten, testbasis en foutafhandeling toevoegen. |
 | 2. Account en persoonlijke omgeving | Niet gestart | Nog geen authenticatie, accountbeheer of onderzoeksdossiers. | Technische keuze voor authenticatie en persoonlijke dataopslag. |
 | 3. Onderzoeksvragen, thema's en deelvragen | Niet gestart | Alleen illustratieve thema's in de frontend. | Functioneel dossier met onderzoeksvraag, deelvragen en themahiërarchie. |
 | 4. Studie-items | Niet gestart | Alleen illustratieve notities in de frontend. | Items aanmaken, typeren, bewerken en archiveren. |
@@ -76,11 +76,13 @@ onderzoeksvraag
 - [x] Basisstijl en Nederlandstalige navigatie toevoegen.
 - [x] Linting en productiebuild laten slagen.
 - [x] Productie-afhankelijkheden op bekende kwetsbaarheden controleren.
+- [x] Relationeel PostgreSQL-datamodel en eerste migratie toevoegen.
+- [x] Testfundament met frontend- en database-integratietests toevoegen.
 - [ ] Frontendtermen aanpassen van algemene thema's naar onderzoeksdossiers.
-- [ ] Definitieve database- en authenticatiekeuze vastleggen.
-- [ ] Relationeel datamodel implementeren.
+- [x] PostgreSQL en Drizzle als databasebasis vastleggen.
+- [ ] Definitieve authenticatiekeuze vastleggen.
 - [ ] Server-side toegangscontrole voorbereiden.
-- [ ] Automatische testbasis toevoegen.
+- [x] Automatische testbasis toevoegen.
 - [ ] Centrale foutafhandeling en logging toevoegen.
 
 ## Afgeronde pull requests
@@ -89,10 +91,11 @@ onderzoeksvraag
 | --- | --- | --- |
 | [#1](https://github.com/ArthurTichem-tech/study-notes/pull/1) | Responsive app foundation | Gemergd. Technische frontendbasis, startscherm en mobiele navigatie toegevoegd. |
 | [#2](https://github.com/ArthurTichem-tech/study-notes/pull/2) | Eerste MVP-plan | Gemergd en met deze planwijziging vervangen door de individuele onderzoeksworkflow. |
+| [#3](https://github.com/ArthurTichem-tech/study-notes/pull/3) | Vernieuwd productplan en ontwikkelstatus | Gemergd. Individuele onderzoeksworkflow en vaste voortgangsregistratie toegevoegd. |
 
 ## Actieve pull requests
 
-Er zijn op het moment van deze update geen actieve functionele pull requests. De plan- en statuswijziging krijgt een eigen pull request.
+De databasefoundation is in ontwikkeling op branch `agent/database-foundation`. Er zijn geen andere actieve functionele pull requests.
 
 ## Belangrijke koersbesluiten
 
@@ -105,11 +108,10 @@ Er zijn op het moment van deze update geen actieve functionele pull requests. De
 
 ## Eerstvolgende ontwikkelbeslissingen
 
-1. Bepalen hoe klikbaar of functioneel het fase-0-prototype moet zijn.
+1. De database lokaal of beheerd beschikbaar maken en de eerste migratie uitvoeren.
 2. De bestaande startpagina inhoudelijk aanpassen van thema-overzicht naar onderzoeksdossiers.
-3. Een voorbeeldonderzoek kiezen waarmee de volledige workflow wordt getest.
-4. De interview- en validatieaanpak voorbereiden voordat grote backendonderdelen worden gebouwd.
-5. Daarna pas de database- en authenticatiekeuze definitief maken.
+3. Authenticatie voor de persoonlijke onderzoeksomgeving kiezen en implementeren.
+4. Daarna onderzoeksdossiers functioneel maken, inclusief tests voor iedere gebruikersroute.
 
 ## Werkwijze voor voortgang
 
